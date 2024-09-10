@@ -1,10 +1,11 @@
 <h1 align="center">Hi 👋, I'm <a href="https://github.com/bhupesh98">Bhupesh Dewangan</a></h1>
-<h3 align="center">A passionate backend developer from India</h3>
-
-<img align="right" src="https://github.com/bhupesh98/bhupesh98/blob/main/terminal.gif" width="40%"/>
+<h3 align="center">A passionate Backend Developer from India!</h3>
+<div align="center">
+<a href="https://app.daily.dev/aidnitra"><img src="https://api.daily.dev/devcards/v2/bHMXYfJXTgnhzz0qESDET.png?r=yfu&type=wide" width="652" alt="Bhupesh Dewangan's Dev Card"/></a>
+</div>
 
 ## About Me:
-Greetings! I'm a second-year undergrad at IIITA, currently as FOSS Wing member at GeekHaven, our college's technical society. Passionate about technology, I thrive on the challenges of building backend oriented projects and organizing workshops. Check out my GitHub repositories to explore my work and let's collaborate to make a mark in the world of technology! 🌐💻✨
+Greetings! I'm a third-year undergrad at IIITA, currently as FOSS Wing co-ordinator at GeekHaven, our college's technical society. Passionate about technology, I thrive on the challenges of building backend oriented projects and organizing workshops. Check out my GitHub repositories to explore my work and let's collaborate to make a mark in the world of technology! 🌐💻✨
 
 ## Connect with me:
 <p align="left">
