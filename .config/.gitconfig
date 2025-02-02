@@ -1,0 +1,23 @@
+[user]
+	email = bhupeshdewangan20@gmail.com
+	name = Bhupesh Dewangan
+[http]
+  proxy = http://IIT2022042:2004-10-20@172.31.2.3:8080
+[credential "http://172.31.2.3:8080"]
+	provider = generic
+[alias]
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
+	g = grep --break --heading --line-number
+	nccommit = commit -a --allow-empty-message -m \"\"
+[color]
+	ui = true
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true
+[status]
+	submoduleSummary = true
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
+[rebase]
+	updateRefs = true
