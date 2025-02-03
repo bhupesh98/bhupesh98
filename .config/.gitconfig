@@ -9,6 +9,17 @@
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
 	g = grep --break --heading --line-number
 	nccommit = commit -a --allow-empty-message -m \"\"
+	cl = "!f() { \
+      if [[ $1 != https://* && $1 != git@* ]]; then \
+        if [[ $1 == */* ]]; then \
+          git clone https://github.com/$1.git \"${@:2}\"; \
+        else \
+          git clone https://github.com/bhupesh98/$1.git \"${@:2}\"; \
+        fi; \
+      else \
+        git clone $1 \"${@:2}\"; \
+      fi; \
+  	}; f"
 [color]
 	ui = true
 [commit]
