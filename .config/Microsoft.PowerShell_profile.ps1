@@ -1,4 +1,13 @@
 # Personal configurations
+[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+
+function Invoke-FzfHistorySearch {
+	$selectedCommand = (Get-Content (Get-PSReadLineOption).HistorySavePath | fzf --height 40%)
+	if ($selectedCommand) {
+       		[System.Windows.Forms.SendKeys]::SendWait("$selectedCommand{ENTER}")
+    	}
+}
+Set-PSReadLineKeyHandler -Chord Ctrl+r -ScriptBlock { Invoke-FzfHistorySearch }
 
 function mkcd {
   param(
