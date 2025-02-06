@@ -2,10 +2,10 @@
 # I don't recommend this, this is written just for automation
 # Just enter the required details and execute the script
 
-REPO_URL= ""
-GITHUB_ID= ""
+REPO_URL=""
+GITHUB_ID=""
 
-REPO_NAME= $(basename "${REPO_URL%.git}")
+REPO_NAME=$(basename "${REPO_URL%.git}")
 
 git clone $REPO_URL tmp && cd tmp
 

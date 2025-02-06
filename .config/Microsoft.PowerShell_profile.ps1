@@ -9,6 +9,9 @@ function Invoke-FzfHistorySearch {
 }
 Set-PSReadLineKeyHandler -Chord Ctrl+r -ScriptBlock { Invoke-FzfHistorySearch }
 
+Remove-Alias diff -Force
+Remove-Alias where -Force
+
 function mkcd {
   param(
     [Parameter(Mandatory = $true, Position = 0)]
