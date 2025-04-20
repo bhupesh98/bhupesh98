@@ -14,7 +14,9 @@ $env:FZF_CTRL_T_OPTS = '
 --preview="bat --style=numbers --color=always {} || cat {}"
 --preview-window=right:60%
 '
-$env:FZF_DEFAULT_COMMAND='fd --type f --exclude .git --exclude node_modules --exclude .venv --exclude venv'
+
+$env:FZF_DEFAULT_COMMAND='fd --type f --exclude .git --exclude node_modules --exclude .pnpm-store --exclude .venv --exclude venv'
+$env:FZF_ALT_C_COMMAND = 'fd --type d --exclude .git --exclude node_modules --exclude .pnpm-store --exclude .venv --exclude venv'
 $env:FZF_CTRL_T_COMMAND="$env:FZF_DEFAULT_COMMAND"
 
 function mkcd {
