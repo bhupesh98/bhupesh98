@@ -1,13 +1,21 @@
 # Personal configurations
-[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+# PSFzf Config
+Remove-PSReadlineKeyHandler 'Ctrl+r'
+Remove-PSReadlineKeyHandler 'Ctrl+t'
 
-function Invoke-FzfHistorySearch {
-	$selectedCommand = (Get-Content (Get-PSReadLineOption).HistorySavePath | Sort-Object -Unique | fzf --height 40%)
-	if ($selectedCommand) {
-       		[System.Windows.Forms.SendKeys]::SendWait("$selectedCommand{ENTER}")
-    	}
-}
-Set-PSReadLineKeyHandler -Chord Ctrl+r -ScriptBlock { Invoke-FzfHistorySearch }
+Import-Module -Name PSFzf
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+$env:FZF_DEFAULT_OPTS='
+  --height 80%
+  --reverse
+  --border
+'
+$env:FZF_CTRL_T_OPTS = '
+--preview="bat --style=numbers --color=always {} || cat {}"
+--preview-window=right:60%
+'
+$env:FZF_DEFAULT_COMMAND='fd --type f --exclude .git --exclude node_modules --exclude .venv --exclude venv'
+$env:FZF_CTRL_T_COMMAND="$env:FZF_DEFAULT_COMMAND"
 
 function mkcd {
   param(
