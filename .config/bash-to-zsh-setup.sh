@@ -1,5 +1,5 @@
 # Install zsh
-sudo apt install zsh
+sudo apt install zsh -y
 
 # Change shell to zsh
 sudo chsh -s $(which zsh)
@@ -17,17 +17,19 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 sed -i 's|ZSH_THEME=".*"|ZSH_THEME="powerlevel10k/powerlevel10k"|' ~/.zshrc
 
 
-git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-git clone --depth=1 https://github.com/hlissner/zsh-autopair.git $ZSH_CUSTOM/plugins/zsh-autopair
+git clone --depth=1 https://github.com/hlissner/zsh-autopair.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autopair
 
 # Edit .zshrc file to use the zsh-autopair plugin
 sed -i 's/plugins=(.*)/plugins=(zsh-autosuggestions zsh-syntax-highlighting zsh-autopair)/' ~/.zshrc
 
 # Install necessary dev tool dependency
-sudo apt install fzf fd-find ripgrep bat
+sudo apt install fzf fd-find ripgrep bat -y
+
+sudo ln -s $(which fdfind) /usr/bin/fd
 
 echo "
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
@@ -39,12 +41,16 @@ export FZF_DEFAULT_OPTS='
   --border
 '
 export FZF_CTRL_T_OPTS='
---preview=\"bat --style=numbers --color=always {} || cat {}\"
+--preview=\"batcat --style=numbers --color=always {} || cat {}\"
 --preview-window=right:60%
 '
 # Optional: Use fd (if installed) for faster file search
 export FZF_DEFAULT_COMMAND='fd --type f --exclude \".git\" --exclude \"node_modules\" --exclude \".venv\" --exclude \"venv\"'
 export FZF_CTRL_T_COMMAND=\"\$FZF_DEFAULT_COMMAND\"
 " >> ~/.zshrc
+
+echo "alias bat=batcat
+alias python=python3
+" >> ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/alias.zsh
 
 source ~/.zshrc
