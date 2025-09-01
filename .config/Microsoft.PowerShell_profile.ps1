@@ -114,95 +114,39 @@ Report bugs to <bug-gzip@gnu.org>.
 
 function apt-cyg { & "C:\cygwin64\bin\bash.exe" apt-cyg @args}
 
-function ConvertTo-CygwinPath {
-    param (
-        [string]$Path
-    )
-    # Check if cygpath exists and if the path needs conversion
-    if ($Path -match '^[A-Za-z]:[\\/]' -or $Path -match '^[A-Za-z]:$') { # Checks for drive letters
-        & "C:\cygwin64\bin\cygpath.exe" -u "$Path"
-    } else {
-        return $Path # Return original path if it's already Cygwin-like or a relative path not needing conversion
-    }
+# Make file operations interactive
+function rm { & "C:\cygwin64\bin\rm.exe" -i @args }
+
+# Default to human-readable figures
+function df { & "C:\cygwin64\bin\df.exe" -h @args }
+function du { & "C:\cygwin64\bin\du.exe" -h @args }
+
+# Misc
+function less { & "C:\cygwin64\bin\less.exe" -r @args }
+function grep { & "C:\cygwin64\bin\grep.exe" --color=auto @args }
+# Quick extract archives (tar, zip, etc.)
+function x { 
+  param([string]$file)
+  if ($file -match '\.tar\.gz$') { tar -xvzf $file }
+  elseif ($file -match '\.zip$') { unzip $file }
+  else { Write-Host "Unknown format: $file" }
 }
 
-# Wrap Cygwin rm
-function rm {
-    param(
-        [Parameter(Mandatory=$true, ValueFromRemainingArguments=$true)]$Paths
-    )
-    $convertedPaths = $Paths | ForEach-Object { ConvertTo-CygwinPath -Path $_ }
-    & "C:\cygwin64\bin\rm.exe" -i $convertedPaths
-}
+# Better stuff
+function df { duf @args }
+function diff { delta @args }
+function less { bat --paging=always @args }
+function ps { procs @args }
+function tree { eza --icons --tree --group-directories-first @args }
 
-# Wrap Cygwin df (doesn't usually take paths, but good practice to include path conversion)
-function df {
-    param(
-        [Parameter(ValueFromRemainingArguments=$true)]$ArgsList
-    )
-    $convertedArgs = $ArgsList | ForEach-Object { ConvertTo-CygwinPath -Path $_ }
-    & "C:\cygwin64\bin\df.exe" -h $convertedArgs
-}
+# eza directory listings
+function ls { eza --icons --group-directories-first @args }
+function ll { eza --icons --git --hyperlink --group-directories-first -lh @args }
+function la { eza --icons --git --hyperlink --group-directories-first -lAh @args }
+function l  { eza --icons --group-directories-first -1 @args }
 
-# Wrap Cygwin du (takes paths)
-function du {
-    param(
-        [Parameter(ValueFromRemainingArguments=$true)]$Paths
-    )
-    $convertedPaths = $Paths | ForEach-Object { ConvertTo-CygwinPath -Path $_ }
-    & "C:\cygwin64\bin\du.exe" -h $convertedPaths
-}
-
-# Misc functions
-function less {
-    param(
-        [Parameter(ValueFromRemainingArguments=$true)]$ArgsList
-    )
-    $convertedArgs = $ArgsList | ForEach-Object { ConvertTo-CygwinPath -Path $_ }
-    & "C:\cygwin64\bin\less.exe" -r $convertedArgs
-}
-
-function grep {
-    param(
-        [Parameter(ValueFromRemainingArguments=$true)]$ArgsList
-    )
-    $convertedArgs = $ArgsList | ForEach-Object { ConvertTo-CygwinPath -Path $_ }
-    & "C:\cygwin64\bin\grep.exe" --color=auto $convertedArgs
-}
-
-# Directory listing functions (ls, ll, la, l)
-function ls {
-    param(
-        [Parameter(ValueFromRemainingArguments=$true)]$Paths
-    )
-    $convertedPaths = $Paths | ForEach-Object { ConvertTo-CygwinPath -Path $_ }
-    & "C:\cygwin64\bin\ls.exe" -hF --color=auto $convertedPaths
-}
-
-function ll {
-    param(
-        [Parameter(ValueFromRemainingArguments=$true)]$Paths
-    )
-    $convertedPaths = $Paths | ForEach-Object { ConvertTo-CygwinPath -Path $_ }
-    & "C:\cygwin64\bin\ls.exe" -hF --color=auto -l $convertedPaths
-}
-
-function la {
-    param(
-        [Parameter(ValueFromRemainingArguments=$true)]$Paths
-    )
-    $convertedPaths = $Paths | ForEach-Object { ConvertTo-CygwinPath -Path $_ }
-    & "C:\cygwin64\bin\ls.exe" -hF --color=auto -A $convertedPaths
-}
-
-function l {
-    param(
-        [Parameter(ValueFromRemainingArguments=$true)]$Paths
-    )
-    $convertedPaths = $Paths | ForEach-Object { ConvertTo-CygwinPath -Path $_ }
-    & "C:\cygwin64\bin\ls.exe" -CF --color=auto $convertedPaths
-}
-
+# Quick Git Stuff
+function gst { git status -sb }
 
 # Yazi
 function y {
@@ -224,6 +168,7 @@ Remove-Alias -Name cp -Force -ErrorAction SilentlyContinue
 Remove-Alias -Name sort -Force -ErrorAction SilentlyContinue 
 Remove-Alias -Name cat -Force -ErrorAction SilentlyContinue 
 Remove-Alias -Name man -Force -ErrorAction SilentlyContinue
+Remove-Alias -Name ls -Force -ErrorAction SilentlyContinue
 Set-Alias -Name vim -Value nvim
 Set-Alias -Name htop -Value btop
 Set-Alias -Name top -Value tasklist
@@ -258,9 +203,3 @@ Invoke-Expression (& { (pnpm completion pwsh | Out-String) })
 
 # gh completion
 Invoke-Expression (& { (gh completion -s powershell | Out-String) })
-
-# minikube completion
-Invoke-Expression (& { (minikube completion powershell | Out-String) })
-
-# helm completion
-Invoke-Expression (& { (helm completion powershell | Out-String) })
