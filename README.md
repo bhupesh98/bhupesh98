@@ -1,21 +1,15 @@
 <h1 align="center">Hi 👋, I'm <a href="https://github.com/bhupesh98">Bhupesh Dewangan</a></h1>
 <h3 align="center">A passionate Backend Developer from India!</h3>
-<div align="center">
-<a href="https://app.daily.dev/aidnitra"><img src="https://api.daily.dev/devcards/v2/bHMXYfJXTgnhzz0qESDET.png?r=yfu&type=wide" width="652" alt="Bhupesh Dewangan's Dev Card"/></a>
-</div>
 
 ## About Me:
 Greetings! I'm a third-year undergrad at IIITA, currently as FOSS Wing co-ordinator at GeekHaven, our college's technical society. Passionate about technology, I thrive on the challenges of building backend oriented projects and organizing workshops. Check out my GitHub repositories to explore my work and let's collaborate to make a mark in the world of technology! 🌐💻✨
 
 ## Connect with me:
-<p align="left">
+<p align="center">
 <a href="https://linkedin.com/in/bhupesh-dewangan-9763941a5" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="bhupesh-dewangan-9763941a5" height="30" width="40" /></a>
-<a href="https://instagram.com/bhupesh._dewangan" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="bhupesh._dewangan" height="30" width="40" /></a>
-<a href="https://www.codechef.com/users/aidnitra_98" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.1.0/icons/codechef.svg" alt="aidnitra_98" height="30" width="40" /></a>
-<a href="https://codeforces.com/profile/aidnitra" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/codeforces.svg" alt="aidnitra" height="30" width="40" /></a>
-<a href="https://www.leetcode.com/aidnitra_98" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/leet-code.svg" alt="aidnitra_98" height="30" width="40" /></a>
 </p>
 
+## Animal Farming
 <div align="center">
 <a href="https://github.com/devxb/gitanimals">
 <img
@@ -31,8 +25,17 @@ Greetings! I'm a third-year undergrad at IIITA, currently as FOSS Wing co-ordina
 
 ## GitHub Stats:
 
-<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=bhupesh98&show_icons=true&locale=en&layout=compact" alt="bhupesh98" /></p>
+<table>
+<tr>
+<td align="center"><img width="500" src="https://github-readme-stats.vercel.app/api?username=bhupesh98&show_icons=true&theme=dracula&border_color=61dafb&include_all_commits=true" /></td>
+<td align="center"><img width="375" src="https://github-readme-stats.vercel.app/api/top-langs?username=bhupesh98&show_icons=true&locale=en&layout=compact&theme=dracula&border_color=61dafb" alt="bhupesh98" /></td>
+<td align="center"><img width="500" src="http://github-readme-streak-stats.herokuapp.com?user=bhupesh98&theme=dracula&border=61DAFB&fire=DDB80F" /></td>
+</table>
 
-<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=bhupesh98&show_icons=true&locale=en" alt="bhupesh98" /></p>
 
-<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=bhupesh98&" alt="bhupesh98" /></p>
+<div align=center>
+    <a href="https://github.com/ryo-ma/github-profile-trophy" title="Go to Source">
+      <img align="center" width=100% src="https://github-profile-trophy.vercel.app/?username=bhupesh98&theme=dracula&column=8" alt="zumrudu-anka" />
+    </a>
+</div>
+<hr>
