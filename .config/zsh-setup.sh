@@ -13,15 +13,6 @@
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# Install powerlevel10k theme
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-
-git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-git clone --depth=1 https://github.com/hlissner/zsh-autopair.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autopair
-
 # Edit .zshrc file
 sed -i 's|ZSH_THEME=".*"|ZSH_THEME="powerlevel10k/powerlevel10k"|' ~/.zshrc
 sed -i '1i # Set up brew\neval "$(brew shellenv)"' ~/.zshrc
@@ -30,7 +21,18 @@ sed -i "/^[^#]*plugins=/s/plugins=(.*)/plugins=(git zsh-autosuggestions zsh-synt
 # Install necessary dev tool dependency
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-sudo brew install bat fd fzf jq ripgrep yazi zoxide font-symbols-only-nerd-font
+sudo brew install ast-grep bat fd fzf jq ripgrep yazi zoxide font-symbols-only-nerd-font gitui neovim
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+git clone --depth=1 https://github.com/hlissner/zsh-autopair.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autopair
+
+git clone --depth=1 https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
 
 echo "
 # FZF default options (colors, layout, etc.)
@@ -62,6 +64,7 @@ function y() {
 " >> ~/.zshrc
 
 echo "alias python=python3
+alias vim=nvim
 " >> ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/alias.zsh
 
 source ~/.zshrc
