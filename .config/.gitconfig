@@ -1,14 +1,11 @@
 [user]
 	email = bhupeshdewangan20@gmail.com
 	name = Bhupesh Dewangan
-[http]
-  proxy = http://IIT2022042:2004-10-20@172.31.2.3:8080
-[credential "http://172.31.2.3:8080"]
+[credential]
 	provider = generic
 [alias]
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
 	g = grep --break --heading --line-number
-	nccommit = commit -a --allow-empty-message -m \"\"
 	cl = "!f() { \
       if [[ $1 != https://* && $1 != git@* ]]; then \
         if [[ $1 == */* ]]; then \
@@ -20,15 +17,38 @@
         git clone $1 \"${@:2}\"; \
       fi; \
   	}; f"
+    commit-as = "!f() { \
+        if [ $# -lt 3 ]; then \
+            echo 'Usage: git commit-as \"Name\" \"email@example.com\" \"commit message\"'; \
+            return 1; \
+        fi; \
+        GIT_AUTHOR_NAME=\"$1\" GIT_AUTHOR_EMAIL=\"$2\" GIT_COMMITTER_NAME=\"$1\" GIT_COMMITTER_EMAIL=\"$2\" git commit -m \"$3\"; \
+    }; f"
 [color]
 	ui = true
 [commit]
 	gpgsign = true
 [tag]
 	gpgSign = true
-[status]
-	submoduleSummary = true
-[blame]
-	ignoreRevsFile = .git-blame-ignore-revs
+[gpg]
+	program = gpg
 [rebase]
 	updateRefs = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[core]
+	pager = delta
+[delta]
+	features = side-by-side syntax-highlighting
+	navigate = true  # use n and N to move between diff sections
+[interactive]
+    diffFilter = delta --color-only
+[merge]
+    conflictStyle = zdiff3

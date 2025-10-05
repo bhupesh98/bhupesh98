@@ -21,7 +21,7 @@ sed -i "/^[^#]*plugins=/s/plugins=(.*)/plugins=(git zsh-autosuggestions zsh-synt
 # Install necessary dev tool dependency
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-sudo brew install ast-grep bat fd fzf jq ripgrep yazi zoxide font-symbols-only-nerd-font gitui neovim
+sudo brew install ast-grep bat delta eza fd fzf jq ripgrep yazi zoxide font-symbols-only-nerd-font gitui neovim
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
@@ -33,6 +33,8 @@ git clone --depth=1 https://github.com/hlissner/zsh-autopair.git ${ZSH_CUSTOM:-$
 
 git clone --depth=1 https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
+
+curl -o ~/.gitconfig https://raw.githubusercontent.com/bhupesh98/bhupesh98/main/.config/.gitconfig
 
 echo "
 # FZF default options (colors, layout, etc.)
@@ -65,6 +67,10 @@ function y() {
 
 echo "alias python=python3
 alias vim=nvim
+alias ls=\"eza --sort ext --group-directories-first --icons\"
+alias ll=\"eza -lAh --sort ext --group-directories-first --icons --hyperlink --git --git-repos\"
+alias la=\"ls -a\"
+alias l=\"ls -1F\"
 " >> ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/alias.zsh
 
 source ~/.zshrc

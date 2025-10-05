@@ -106,7 +106,8 @@ function Install-WingetApplications {
         @{Name = "gh"; Id = "GitHub.cli"},
         @{Name = "git-lfs"; Id = "GitHub.GitLFS"},
         @{Name = "nodejs"; Id = "OpenJS.NodeJS.LTS"},
-        @{Name = "powertoys"; Id = "Microsoft.PowerToys"}
+        @{Name = "powertoys"; Id = "Microsoft.PowerToys"},
+        @{Name = "ast-grep"; Id = "ast-grep.ast-grep"}
     )
     
     foreach ($app in $applications) {
