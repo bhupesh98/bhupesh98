@@ -107,7 +107,8 @@ function Install-WingetApplications {
         @{Name = "git-lfs"; Id = "GitHub.GitLFS"},
         @{Name = "nodejs"; Id = "OpenJS.NodeJS.LTS"},
         @{Name = "powertoys"; Id = "Microsoft.PowerToys"},
-        @{Name = "ast-grep"; Id = "ast-grep.ast-grep"}
+        @{Name = "ast-grep"; Id = "ast-grep.ast-grep"},
+        @{Name = "tldr"; Id = "dbrgn.tealdeer"}
     )
     
     foreach ($app in $applications) {
@@ -220,7 +221,7 @@ function Test-Installations {
     $commands = @(
         "fzf", "fd", "bat", "eza", "git", "yazi", "nvim", 
         "btop", "gawk", "procs", "duf", "delta", "oh-my-posh", 
-        "zoxide", "docker", "gh", "node", "gitui"
+        "zoxide", "docker", "gh", "node", "gitui", "tldr", "ast-grep"
     )
     
     $successful = 0

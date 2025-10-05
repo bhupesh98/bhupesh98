@@ -21,7 +21,9 @@ sed -i "/^[^#]*plugins=/s/plugins=(.*)/plugins=(git zsh-autosuggestions zsh-synt
 # Install necessary dev tool dependency
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-sudo brew install ast-grep bat delta eza fd fzf jq ripgrep yazi zoxide font-symbols-only-nerd-font gitui neovim
+## Install brew packages ##
+sudo brew install ast-grep bat delta dust eza fd fzf jq ouch ripgrep sd tealdeer yazi zoxide font-symbols-only-nerd-font gitui neovim
+###########################
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
@@ -72,5 +74,9 @@ alias ll=\"eza -lAh --sort ext --group-directories-first --icons --hyperlink --g
 alias la=\"ls -a\"
 alias l=\"ls -1F\"
 " >> ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/alias.zsh
+
+mkdir ~/.config/tealdeer
+echo "[updates]
+  auto_update = true" >> ~/.config/tealdeer/config.toml
 
 source ~/.zshrc
