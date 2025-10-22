@@ -1,5 +1,8 @@
 # Personal configurations
 
+Invoke-Expression (&starship init powershell)
+Enable-TransientPrompt
+
 # PSFzf Config
 Remove-PSReadlineKeyHandler 'Ctrl+r'
 Remove-PSReadlineKeyHandler 'Ctrl+t'
@@ -19,12 +22,12 @@ $env:FZF_CTRL_T_OPTS = '
 '
 
 $env:FZF_ALT_C_OPTS = '
---walker-skip .git,node_modules,.pnpm-store,.venv,.uv-store
+--walker-skip .git,node_modules,.pnpm-store,.venv,.uv-cache
 --preview "tree -C {}"
 '
 
-$env:FZF_DEFAULT_COMMAND = 'fd --type f --exclude .git --exclude node_modules --exclude .pnpm-store --exclude .venv --exclude .uv-store --strip-cwd-prefix'
-$env:FZF_ALT_C_COMMAND = 'fd --type d --exclude .git --exclude node_modules --exclude .pnpm-store --exclude .venv --exclude .uv-store'
+$env:FZF_DEFAULT_COMMAND = 'fd --type f --exclude .git --exclude node_modules --exclude .pnpm-store --exclude .venv --exclude .uv-cache --strip-cwd-prefix'
+$env:FZF_ALT_C_COMMAND = 'fd --type d --exclude .git --exclude node_modules --exclude .pnpm-store --exclude .venv --exclude .uv-cache'
 $env:FZF_CTRL_T_COMMAND = "$env:FZF_DEFAULT_COMMAND"
 
 function mkcd {
@@ -426,184 +429,9 @@ function y {
   Remove-Item -Path $tmp
 }
 
-Remove-Alias -Name ? -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name % -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ac -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name blsmba -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name blsmbclas -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name clc -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name clhy -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name cli -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name clp -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name clv -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name cnsn -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name compare -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name copy -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name cpi -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name cpp -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name cssmbo -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name cssmbse -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name cvpa -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name dbp -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name del -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name dir -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name dnsn -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name dsmbd -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ebp -Force -ErrorAction SilentlyContinue
 Remove-Alias -Name echo -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name epal -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name epcsv -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name erase -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name esmbd -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name etsn -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name exsn -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name fc -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name fhx -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name fl -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name foreach -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ft -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name fw -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gal -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gbp -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gc -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gcb -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gci -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gcm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gcs -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gdr -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gerr -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ghy -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gi -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gin -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gjb -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gl -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gmo -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gp -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gps -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gpv -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name group -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name grsmba -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name grsmbclas -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmba -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbb -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbc -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbcc -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbccm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbclas -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbcn -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbd -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbgm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbmc -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbo -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbs -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbsap -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbsc -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbscm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbscp -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbse -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbsn -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsmbt -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsn -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gsv -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gtz -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gu -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name gv -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name h -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name icm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ihy -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ii -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ipal -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ipcsv -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ipmo -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name md -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name measure -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name mi -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name mount -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name move -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name mp -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name nal -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ndr -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ni -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name nmo -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name nsmbccm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name nsmbgm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name nsmbm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name nsmbs -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name nsmbsap -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name nsmbscm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name nsmbt -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name nsn -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name nv -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ogv -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name oh -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name popd -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name pushd -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rbp -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rcjb -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rcsn -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rd -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rdr -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ren -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ri -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rjb -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rksmba -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rksmbclas -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rmdir -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rmo -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rni -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rnp -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rp -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rsmbb -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rsmbc -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rsmbcc -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rsmbccm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rsmbgm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rsmbm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rsmbs -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rsmbsap -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rsmbsc -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rsmbscm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rsmbt -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rsn -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rv -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name rvpa -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name sajb -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name sal -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name saps -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name sasv -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name sbp -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name scb -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name select -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name set -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name shcm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name si -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name sl -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name sleep -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name sls -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name sp -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name spjb -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name spps -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name spsv -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ssmbb -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ssmbcc -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ssmbccm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ssmbp -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ssmbs -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ssmbsap -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ssmbsc -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ssmbscm -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name start -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name stz -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name sv -Force -ErrorAction SilentlyContinue
 Remove-Alias -Name tee -Force -ErrorAction SilentlyContinue
 Remove-Alias -Name type -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name udsmbmc -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ulsmba -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name ulsmbclas -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name wjb -Force -ErrorAction SilentlyContinue
-Remove-Alias -Name write -Force -ErrorAction SilentlyContinue
 Remove-Alias -Name where -Force -ErrorAction SilentlyContinue
 Remove-Alias -Name diff -Force -ErrorAction SilentlyContinue 
 Remove-Alias -Name chdir -Force -ErrorAction SilentlyContinue 
@@ -621,11 +449,7 @@ Set-Alias -Name awk -Value gawk
 Set-Alias -Name ps -Value procs
 Set-Alias -Name df -Value duf
 Set-Alias -Name diff -Value delta
-
-$ompInit = oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\lightgreen.omp.json"
-Invoke-Expression $ompInit
-
-Enable-PoshTransientPrompt
+Set-Alias -Name wget -Value wget2
 
 Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
   param($wordToComplete, $commandAst, $cursorPosition)
@@ -647,18 +471,14 @@ if (Get-Command docker -ErrorAction SilentlyContinue) {
   Invoke-Expression (& { (docker completion powershell | Out-String) })
 }
 
+# Rustup completion
+if (Get-Command rustup -ErrorAction SilentlyContinue) {
+  Invoke-Expression (& { (rustup completions powershell | Out-String) }) 
+}
+
 # pnpm completion
 if (Get-Command pnpm -ErrorAction SilentlyContinue) {
   Invoke-Expression (& { (pnpm completion pwsh | Out-String) })
-}
-
-# gh completion
-if (Get-Command gh -ErrorAction SilentlyContinue) {
-  Invoke-Expression (& { (gh completion -s powershell | Out-String) })
-}
-
-if (Get-Command bat -ErrorAction SilentlyContinue) {
-  Invoke-Expression (& { (bat --completion ps1 | Out-String) })
 }
 
 if (Get-Command rg -ErrorAction SilentlyContinue) {
@@ -667,10 +487,6 @@ if (Get-Command rg -ErrorAction SilentlyContinue) {
 
 if (Get-Command uv -ErrorAction SilentlyContinue) {
   Invoke-Expression (& { (uv generate-shell-completion powershell | Out-String) })
-}
-
-if (Get-Command rg -ErrorAction SilentlyContinue) {
-  Invoke-Expression (& { (uvx --generate-shell-completion powershell | Out-String) })
 }
 
 if ($env:TERM_PROGRAM -eq "vscode") { . "$(code --locate-shell-integration-path pwsh)" } 
