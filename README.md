@@ -54,37 +54,29 @@
 
 ## 🛠️ Tech Stack:
 
-<details>
-<summary><b>🖥️ Backend Technologies</b></summary>
+<b>🖥️ Backend Technologies</b>
 <br>
 <p align="left">
 <img src="https://skillicons.dev/icons?i=nodejs,express,python,django,flask,java,spring" />
 </p>
-</details>
 
-<details>
-<summary><b>🗄️ Databases</b></summary>
+<b>🗄️ Databases</b>
 <br>
 <p align="left">
 <img src="https://skillicons.dev/icons?i=mongodb,mysql,postgresql,redis" />
 </p>
-</details>
 
-<details>
-<summary><b>☁️ DevOps & Cloud</b></summary>
+<b>☁️ DevOps & Cloud</b>
 <br>
 <p align="left">
 <img src="https://skillicons.dev/icons?i=aws,docker,kubernetes,linux,bash,git" />
 </p>
-</details>
 
-<details>
-<summary><b>🌐 Frontend & Others</b></summary>
+<b>🌐 Frontend & Others</b>
 <br>
 <p align="left">
-<img src="https://skillicons.dev/icons?i=html,css,js,ts,react,tailwind,figma,postman" />
+<img src="https://skillicons.dev/icons?i=html,css,js,ts,react,next,tailwind,figma,postman" />
 </p>
-</details>
 
 ## 📊 GitHub Analytics:
 
