@@ -30,6 +30,8 @@ $env:FZF_DEFAULT_COMMAND = 'fd --type f --exclude .git --exclude node_modules --
 $env:FZF_ALT_C_COMMAND = 'fd --type d --exclude .git --exclude node_modules --exclude .pnpm-store --exclude .venv --exclude .uv-cache'
 $env:FZF_CTRL_T_COMMAND = "$env:FZF_DEFAULT_COMMAND"
 
+$env:CLAUDE_CODE_GIT_BASH_PATH="C:\cygwin64\bin\bash.exe"
+
 function mkcd {
   param(
     [Parameter(Mandatory = $true, Position = 0)]
@@ -410,14 +412,6 @@ function gwtls { git worktree list @args }
 function gwtmv { git worktree move @args }
 function gwtrm { git worktree remove @args }
 
-# Quick extract archives (tar, zip, etc.)
-function x { 
-  param([string]$file)
-  if ($file -match '\.tar\.gz$') { tar -xvzf $file }
-  elseif ($file -match '\.zip$') { unzip $file }
-  else { Write-Host "Unknown format: $file" }
-}
-
 # Yazi
 function y {
   $tmp = [System.IO.Path]::GetTempFileName()
@@ -442,6 +436,7 @@ Remove-Alias -Name sort -Force -ErrorAction SilentlyContinue
 Remove-Alias -Name cat -Force -ErrorAction SilentlyContinue 
 Remove-Alias -Name man -Force -ErrorAction SilentlyContinue
 Remove-Alias -Name ls -Force -ErrorAction SilentlyContinue
+Remove-Alias -Name r -Force -ErrorAction SilentlyContinue
 Set-Alias -Name vim -Value nvim
 Set-Alias -Name htop -Value btop
 Set-Alias -Name top -Value tasklist
@@ -449,7 +444,7 @@ Set-Alias -Name awk -Value gawk
 Set-Alias -Name ps -Value procs
 Set-Alias -Name df -Value duf
 Set-Alias -Name diff -Value delta
-Set-Alias -Name wget -Value wget2
+Set-Alias -Name docker -Value podman
 
 Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
   param($wordToComplete, $commandAst, $cursorPosition)
@@ -466,11 +461,6 @@ if (Get-Command zoxide -ErrorAction SilentlyContinue) {
   Invoke-Expression (& { (zoxide init powershell | Out-String) })
 }
 
-# Docker completion
-if (Get-Command docker -ErrorAction SilentlyContinue) {
-  Invoke-Expression (& { (docker completion powershell | Out-String) })
-}
-
 # Rustup completion
 if (Get-Command rustup -ErrorAction SilentlyContinue) {
   Invoke-Expression (& { (rustup completions powershell | Out-String) }) 
@@ -481,12 +471,17 @@ if (Get-Command pnpm -ErrorAction SilentlyContinue) {
   Invoke-Expression (& { (pnpm completion pwsh | Out-String) })
 }
 
+# ripgrep completion
 if (Get-Command rg -ErrorAction SilentlyContinue) {
   Invoke-Expression (& { (rg --generate complete-powershell | Out-String) })
 }
 
+# uv completion
 if (Get-Command uv -ErrorAction SilentlyContinue) {
   Invoke-Expression (& { (uv generate-shell-completion powershell | Out-String) })
 }
 
-if ($env:TERM_PROGRAM -eq "vscode") { . "$(code --locate-shell-integration-path pwsh)" } 
+# podman completion
+if (Get-Command podman -ErrorAction SilentlyContinue) {
+  Invoke-Expression (& { (podman completion powershell | Out-String) })
+}
